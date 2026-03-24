@@ -24,7 +24,7 @@
                 <td>{{$produto->quantidade}}</td>
                 <td>{{$produto->preco}}</td>
                 <td>
-                    <a href="{{route('produto.atualizar', $produto->id)}}">Atualizar</a>
+                    <a href="{{route('produto.atualizar', 1)}}">Atualizar</a>
                 </td>
             </tr>
         @empty

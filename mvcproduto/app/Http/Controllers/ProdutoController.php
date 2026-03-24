@@ -30,8 +30,8 @@ class ProdutoController extends Controller
     }
 
     public function atualizar($id){
-        $aluno = Aluno::findOrFail($id);
-        return view('atualizar', compact('aluno'));
+        $produto = Produto::findOrFail($id);
+        return view('atualizar', compact('produto'));
     }
 
     public function update($request, $id){
