@@ -19,6 +19,7 @@
         <tbody>
             @forelse($produtos as $produto)
             <tr>
+                <td>{{$produto->id}}</td>
                 <td>{{$produto->nome}}</td>
                 <td>{{$produto->quantidade}}</td>
                 <td>{{$produto->preco}}</td>

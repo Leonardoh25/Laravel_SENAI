@@ -12,7 +12,7 @@
     @if(session('success'))
         <p style="color: green">{{session('success')}}</p>
     @endif
-    <form action="{{route('produto.update', $produto->)}}" method="POST">
+    <form action="{{route('produto.update', $produto->id)}}" method="POST">
         @csrf
         @method('PUT')
         <input type="text" name="nome" value="{{old('nome', $produto->nome)}}" required>
