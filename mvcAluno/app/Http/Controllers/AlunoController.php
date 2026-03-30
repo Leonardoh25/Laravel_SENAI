@@ -23,7 +23,7 @@ class AlunoController extends Controller
             'email' => $request->email
         ]);
 
-        return redirect()->back()->with('sucess','Aluno Cadastrado com sucesso!');
+        return redirect()->back()->with('success','Aluno Cadastrado com sucesso!');
     }
 
     public function atualizar($id){
@@ -46,6 +46,13 @@ class AlunoController extends Controller
         $aluno->save();
         return redirect()->back('success','Aluno atualizado com sucesso');
 
+    }
+
+    public function deletar($id){
+        $aluno = Aluno::finOrFail($id); //Buscar o aluno para depois deletar
+        $aluno->deletar();
+
+        return redirect()->route('aluno.listar')->with('success','Aluno excluido com sucesso!');
     }
 }
 ?>
