@@ -8,19 +8,23 @@ use Illuminate\Http\Request;
 class AlunoController extends Controller
 {
     public function listar(){
-        $query = Aluno::query();
-        $alunos = $query->get();
+        // $query = Aluno::query();
+        // $alunos = $query->get();
+
+        $alunos = Aluno::with( 'turma')->get();
         return view('listar', compact('alunos'));
     }
     public function add(Request $request){
         $request->validate([
             'nome' => 'required|string|max:255',
-            'email'=> 'required|string|max:255|unique:alunos,email'
+            'email'=> 'required|string|max:255|unique:alunos,email',
+            'turma_id' => 'nullable|exists:turmas,id' // Para poder ser nulo ou existir na tabela turmas
         ]);
 
         Aluno::create([
             'nome' => $request->nome,
-            'email' => $request->email
+            'email' => $request->email,
+            'turma_id'=> $request->turma_id
         ]);
 
         return redirect()->back()->with('success','Aluno Cadastrado com sucesso!');
